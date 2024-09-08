@@ -1,0 +1,17 @@
+Objective
+---------
+-Save your farm and farmhouse from different types of storms by building and upgrading your house and farm,
+ and strategizing your upgrades.
+-Storms come at the end of the week, 1 day after the storm buyers come to your farm house to buy your
+ crops.
+-The money you earn can be used to upgrade your house and farmhouse ,buy seeds of suitable crops which can
+ withstand the upcoming storm.
+-At the end of the game if you have big house and farm then player gets to marry their crush. :)
+-Cut trees increase your farm and house area.
+
+GamePlay
+--------
+-Loop: Grow>Prepare>FaceOff>Sell>Grow
+-One Day is of 3-5 mins
+-In the night player can only stay for 1 min after that they will die and game will be over.
+-Tree Cutting and Mining in dungeon 
