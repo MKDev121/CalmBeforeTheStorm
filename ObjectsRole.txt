@@ -1,0 +1,43 @@
+|ROLE OF EACH OBJECT IN THE GAME|
+---------------------------------
+
+BACKGROUND
+----------
+-Nothing, only for visual purpose
+
+BASE
+----
+-Main controlling unit, but it is static.
+-Players have to save this building.It has health bar, if the health bar reaches zero then base is destroyed and game is over
+-It also has the attribute of coins, which are used to buy soldiers,tanks,increase health etc...
+-Player gives commands to all units through this
+
+SOLDIER
+-------
+-A soldier shoots down enemy and enemy crafts.
+-They have short health,if they survive a wave then their health is restored for the next one
+-They are spawned from base during the wave
+-There are also enemy soldiers
+
+TURRET
+------
+-A static weapon object which shoots down enemy aircrafts.
+-They have large health, but if they survive a wave then their health is not restored unless they are repaired which is costly
+-They have to be placed before the wave, can't be spawned during the wave
+
+TANKS
+-----
+-A moving weapon object which shoots down enemy and enemy aircrafts.
+-They are given commands to move,aim at air and aim on ground.
+-They have large health, but if they survive a wave then their health is not restored unless they are repaired.
+-They are spawned from the base during the wave.
+-There are enemy tanks
+
+Plane
+-----
+-A moving weapon object from air which shoots down ground enemies
+-They can be called 3-4 times, in the war. When called they drop a bomb when players press down a drop key.
+-They don't have health
+-After every wave player has to purchase them
+-There are enemy air crafts which can be shot down by turret and tanks
+
