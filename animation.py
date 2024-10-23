@@ -1,17 +1,19 @@
 import pygame as pg
 
 class Animator:
-    def __init__(self,dt):
+    def __init__(self,current_frame,dt):
         self.animations={}
         self.dt=dt
         self.animator_timer=0
-        self.current_frame="D:\Games\CalmBeforeTheStorm\ExternalArt\Free War Game Kit\Characters\Soldier\PNG\Soldier_2_walk_1.png"
+        self.current_frame=current_frame+"_walk_2.png"
     def play(self,animation_name):
         if self.animator_timer>=0:
             self.animator_timer-=self.dt
         else:
             self.current_frame=self.animations[animation_name].return_frame()#frame location
             self.animator_timer=self.animations[animation_name].interval#interval
+        
+        
     def load_frame(self):
         return pg.image.load(self.current_frame)
 class Animation:
