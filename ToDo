@@ -1,5 +1,5 @@
 [*] Animation system working
-[] Spawning of units
+[*] Spawning of units
 [] Basic gameplay mechanic
 
 {23/10/2024}
@@ -8,3 +8,10 @@ Finally implemented animation system properly, was trying to make the system gen
 Due to creation of object inside the loop, the current frame was always setting to the default frame,the only way out is 
 to make sure the object creation occurs only one time.This will be the major thing in spawning units.
 For Now I will take rest for 6 hours(in between breakfast), and will start working on spawning around 11:00 AM
+
+(11:00 AM)
+Applied the animation system for all the main objects in the game.
+Also completed the work on spawning system,its rough but I will polish it later.
+Right now will take a break, will get back to work at evening.
+Up Next is to draft the basic gameplay.
+

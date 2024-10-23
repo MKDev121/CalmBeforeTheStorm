@@ -4,8 +4,8 @@ import keyboard
 import units as uni
 units={'soldier':0,
        'turrets':0,
-       'tanks':0,
-       'planes':0}
+       'tank':0,
+       'airplane':0}
 shop={'soldier':10,
       'turret':100,
       'tank':200,
@@ -22,10 +22,11 @@ class Base:
         self.keysdown=False
         self.active_key=None
         
+        
     def user_input(self):
         """Keeps track of all the user input and responds with corresponding action"""
         keys=pg.key.get_pressed()
-        
+        self.mouse_pos=pg.mouse.get_pos()
         if self.keysdown==False:
             if keys[pg.K_i]:
                 self.inventory.inventory_open=~self.inventory.inventory_open
@@ -43,19 +44,25 @@ class Base:
                 if keys[pg.K_1]:#Spawn soldier
                     print('Soldier Spawned')
                     self.active_key=pg.K_1
-                    self.inventory.unit_spawning(uni.Soldier())
+                    self.inventory.unit_spawning(uni.Soldier(position=pg.Vector2(self.mouse_pos[0],500)))
                     self.keysdown=True
                 elif keys[pg.K_2]:#Spawn turret
                     print('Turret Spawned')
                     self.active_key=pg.K_2
+                    self.inventory.unit_spawning(uni.Turret(position=pg.Vector2(self.mouse_pos[0],500)))
                     self.keysdown=True
                 elif keys[pg.K_3]:#Spawn tank
                     print('Tank spawned')
                     self.active_key=pg.K_3
+                    self.inventory.unit_spawning(uni.Tank(position=pg.Vector2(self.mouse_pos[0],500)))
                     self.keysdown=True
                 elif keys[pg.K_4]:#Spawn plane
                     print('Plane spawned')
+                    self.inventory.unit_spawning(uni.Airplane(position=pg.Vector2(self.mouse_pos[0],10)))
+                    
                     self.active_key=pg.K_4
+                
+
                     self.keysdown=True
         if self.active_key!=None:
             self.keysdown=keys[self.active_key]

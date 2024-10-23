@@ -5,7 +5,7 @@ class Animator:
         self.animations={}
         self.dt=dt
         self.animator_timer=0
-        self.current_frame=current_frame+"_walk_2.png"
+        self.current_frame=current_frame+"_default_1.png"
     def play(self,animation_name):
         if self.animator_timer>=0:
             self.animator_timer-=self.dt

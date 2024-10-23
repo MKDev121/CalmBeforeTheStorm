@@ -23,18 +23,8 @@ while running:
     screen.fill('black')
     screen.blit(background_image,pg.Vector2(0,0))
     main_base.user_input()
-    
-    
-    keys = pg.key.get_pressed()
-    
-    
-    if keys[pg.K_a]:
-        soldier.current_animation="walk"
-        
-    else:
-        soldier.current_animation="default"
-    soldier.animator.play(soldier.current_animation)    
-    screen.blit(soldier.animator.load_frame(),pg.Vector2(0,0))
+    # soldier.animator.play(soldier.current_animation)    
+    # screen.blit(soldier.animator.load_frame(),pg.Vector2(0,0))
     
 
     #screen.blit(soldier_anim.load_frame(),pg.Vector2(width/2,height/2))
@@ -43,6 +33,9 @@ while running:
         #main_base.inventory.inventory_opened()
     #pg.draw.rect(screen,'red',pg.Rect((0-camera.offset.x,0-camera.offset.y),(50,50)))
     #pg.draw.circle(screen,'red',pl.position-camera.offset,30)
-    
+    keys = pg.key.get_pressed()
+    for active_unit in main_base.inventory.active_units:  
+        active_unit.animator.play(active_unit.current_animation)
+        screen.blit(active_unit.animator.load_frame(),active_unit.position)
     pg.display.flip()
     dt=clock.tick(60)/1000
