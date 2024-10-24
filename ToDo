@@ -1,9 +1,16 @@
+
 ===============================
 [*] Animation system working
 [*] Spawning of units
 [*] Basic gameplay mechanic
 [*] Command selection rework
 ===============================
+===============================
+[ ] Polishing previous work
+[ ] Inventory system with UI
+[ ] Shopping system with UI
+===============================
+
 {23/10/2024}
 (2:36 AM) 
 Finally implemented animation system properly, was trying to make the system genralised.
@@ -31,4 +38,13 @@ Will work on it after classes
 So I reworked on the command selection, turns out that using pygames.event more than once in the whole application makes things
 irresponsive, so I have to take care of that.
 Now I will just implement all the animation of the other units and will take a break, after that I will plan for the next tasks to be done.
+
+(6:23 PM)
+Back to work! so I have decided the next list of task which is to polish previous work, work on Inventory and Shopping system
+Right now I will do some polishing
+
+(7:26 PM)
+So did some polishing like setting the size of command window depending on the length of the command text with most letters,
+corrected the spawn position of units and flipped the tank.
+Will take break and go for dinner
 

@@ -14,8 +14,8 @@ class Animator:
             self.animator_timer=self.animations[animation_name].interval#interval
         
         
-    def load_frame(self):
-        return pg.image.load(self.current_frame)
+    def load_frame(self,flip):
+        return pg.transform.flip(pg.image.load(self.current_frame),flip,False)
 class Animation:
     def __init__(self,frame_count,frame_location):
         self.frame_count=frame_count

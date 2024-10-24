@@ -56,6 +56,6 @@ while running:
     for active_unit in main_base.inventory.active_units:  
         active_unit.animator.play(active_unit.current_animation)
         active_unit.turn_timer()
-        screen.blit(active_unit.animator.load_frame(),active_unit.position)
+        screen.blit(active_unit.animator.load_frame(active_unit.flip),active_unit.position)
     pg.display.flip()
     dt=clock.tick(60)/1000

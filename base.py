@@ -45,12 +45,12 @@ class Base:
                 if keys[pg.K_1]:#Spawn soldier
                     print('Soldier Spawned')
                     self.active_key=pg.K_1
-                    self.inventory.unit_spawning(uni.Soldier(position=pg.Vector2(self.mouse_pos[0],500)))
+                    self.inventory.unit_spawning(uni.Soldier(position=pg.Vector2(self.mouse_pos[0],540)))
                     self.keysdown=True
                 elif keys[pg.K_2]:#Spawn turret
                     print('Turret Spawned')
                     self.active_key=pg.K_2
-                    self.inventory.unit_spawning(uni.Turret(position=pg.Vector2(self.mouse_pos[0],500)))
+                    self.inventory.unit_spawning(uni.Turret(position=pg.Vector2(self.mouse_pos[0],515)))
                     self.keysdown=True
                 elif keys[pg.K_3]:#Spawn tank
                     print('Tank spawned')
@@ -115,24 +115,27 @@ class Text:
         self.pos=pos
         self.text_surf=font.render(self.text,True,"white") 
         self.rect=pg.Rect(self.pos,(120,30))
-        
+       
 def command_selection(obj,screen,mouse_pos,mouse_down):
     moves= list(obj.animator.animations.keys())
-    pg.draw.rect(screen,(0,0,255),((obj.position.x,obj.position.y-obj.img.get_height()),(150,50*len(moves))))
-    pg.draw.rect(screen,(255,255,255),((obj.position.x,obj.position.y-obj.img.get_height()),(150,50*len(moves))),width=5)
+    
+    max_len=0
     font =pg.font.Font(size=36)
     moves_text=[]
     for move in moves:
         ele=Text(font,move,(obj.position.x+20,obj.position.y-obj.img.get_height()+moves.index(move)*50+10))
-
-        screen.blit(ele.text_surf,ele.pos)
+        if max_len < ele.text_surf.get_width():
+            max_len=ele.text_surf.get_width()
         moves_text.append(ele)       
-        for move_text in moves_text:
-            if move_text.rect.collidepoint(mouse_pos):
-                if mouse_down: 
-                    obj.current_animation=move_text.text
-                    print('command selected')
-                    return True        
+    pg.draw.rect(screen,(0,0,255),((obj.position.x,obj.position.y-obj.img.get_height()),(max_len+30,50*len(moves))))
+    pg.draw.rect(screen,(255,255,255),((obj.position.x,obj.position.y-obj.img.get_height()),(max_len+30,50*len(moves))),width=5)
+    for move_text in moves_text:
+        screen.blit(move_text.text_surf,move_text.pos)
+        if move_text.rect.collidepoint(mouse_pos):
+            if mouse_down: 
+                obj.current_animation=move_text.text
+                print('command selected')
+                return True        
 
 
 
