@@ -1,7 +1,9 @@
+===============================
 [*] Animation system working
 [*] Spawning of units
-[] Basic gameplay mechanic
-
+[*] Basic gameplay mechanic
+[*] Command selection rework
+===============================
 {23/10/2024}
 (2:36 AM) 
 Finally implemented animation system properly, was trying to make the system genralised.
@@ -14,4 +16,19 @@ Applied the animation system for all the main objects in the game.
 Also completed the work on spawning system,its rough but I will polish it later.
 Right now will take a break, will get back to work at evening.
 Up Next is to draft the basic gameplay.
+
+(9:00 PM)
+Started working on the basic gameplay mechanic, right now I am just drafting the mechanic on paper.
+Will implement the idea by tonight and also will polish the spawning system.
+
+{24/10/2024}
+(1:05 AM)
+Implemented the basic gameplay mechanic but the command selection is not that responsive so I have to rework on it 
+to make it more responsive.
+Will work on it after classes
+
+(4:00 PM)
+So I reworked on the command selection, turns out that using pygames.event more than once in the whole application makes things
+irresponsive, so I have to take care of that.
+Now I will just implement all the animation of the other units and will take a break, after that I will plan for the next tasks to be done.
 

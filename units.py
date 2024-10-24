@@ -14,9 +14,19 @@ class Unit:
         self.animator=animation.Animator(frame_location,dt)
         self.current_animation="default"
         self.animator.animations["default"]=animation.Animation(1,frame_location+"_default_")
-        
+        self.img=pg.image.load(self.animator.current_frame)
+        self.rect=pg.Rect((self.position,(self.img.get_width(),self.img.get_height())))
+        self.timer=0
+        self.interval=5
+        self.waiting=False
     def load_obj(self,screen):
         screen.blit(self.animator.play(self.current_animation),pg.Vector2(0,0))
+    def turn_timer(self):
+        if self.timer>=0:
+            self.timer-=self.dt
+        else:
+            self.current_animation="default"
+            self.waiting=True
         
         
 class Soldier(Unit):
@@ -30,11 +40,14 @@ class Soldier(Unit):
 class Turret(Unit):
     def __init__(self,health=200,price=100,name='turrets',frame_location=art_loc+r"\Turret\PNG\turret_1",dt=0.14,position=pg.Vector2(0,0)) -> None:
         super().__init__(health,price,name,frame_location,dt,position)
+        self.animator.animations["fire"]=animation.Animation(8,self.frame_location+"_fire_")
 
 
 class Tank(Unit):
     def __init__(self,health=200,price=200,name='tank',frame_location=art_loc+r"\Tank\PNG\American_sherman",dt=0.14,position=pg.Vector2(0,0)) -> None:
         super().__init__(health,price,name,frame_location,dt,position)
+        self.animator.animations["attack"]=animation.Animation(8,self.frame_location+"_attack_")
+        self.animator.animations["move_forward"]=animation.Animation(8,self.frame_location+"_move_forward_")
 class Airplane(Unit):
     def __init__(self,price=500,name='airplane',frame_location=art_loc+r"\Airplanes\Fokker\Skin 1\PNG\Fokker",dt=0.14,position=pg.Vector2(0,0)) -> None:
         super().__init__(1000,price,name,frame_location,dt,position)

@@ -2,6 +2,7 @@
 import pygame as pg
 import keyboard 
 import units as uni
+import pygame_widgets as pw
 units={'soldier':0,
        'turrets':0,
        'tank':0,
@@ -61,11 +62,10 @@ class Base:
                     self.inventory.unit_spawning(uni.Airplane(position=pg.Vector2(self.mouse_pos[0],10)))
                     
                     self.active_key=pg.K_4
-                
-
                     self.keysdown=True
         if self.active_key!=None:
             self.keysdown=keys[self.active_key]
+        
             
     def key_down(self,key,is_keydown):
         if key:
@@ -108,3 +108,32 @@ class Inventory:
         """The function which will manage buying of units and store them in inventory"""
         
         print('player is buying something')
+class Text:
+    def __init__(self,font,text,pos):
+        self.font=font
+        self.text=text
+        self.pos=pos
+        self.text_surf=font.render(self.text,True,"white") 
+        self.rect=pg.Rect(self.pos,(120,30))
+        
+def command_selection(obj,screen,mouse_pos,mouse_down):
+    moves= list(obj.animator.animations.keys())
+    pg.draw.rect(screen,(0,0,255),((obj.position.x,obj.position.y-obj.img.get_height()),(150,50*len(moves))))
+    pg.draw.rect(screen,(255,255,255),((obj.position.x,obj.position.y-obj.img.get_height()),(150,50*len(moves))),width=5)
+    font =pg.font.Font(size=36)
+    moves_text=[]
+    for move in moves:
+        ele=Text(font,move,(obj.position.x+20,obj.position.y-obj.img.get_height()+moves.index(move)*50+10))
+
+        screen.blit(ele.text_surf,ele.pos)
+        moves_text.append(ele)       
+        for move_text in moves_text:
+            if move_text.rect.collidepoint(mouse_pos):
+                if mouse_down: 
+                    obj.current_animation=move_text.text
+                    print('command selected')
+                    return True        
+
+
+
+    
