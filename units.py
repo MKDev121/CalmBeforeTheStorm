@@ -19,6 +19,8 @@ class Unit:
         self.timer=0
         self.waiting=False
         self.flip=False
+        self.taking_command=False
+        self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png")
     def load_obj(self,screen):
         screen.blit(self.animator.play(self.current_animation),pg.Vector2(0,0))
     def turn_timer(self):
@@ -30,7 +32,7 @@ class Unit:
         
         
 class Soldier(Unit):
-    def __init__(self,health=100,price=10,name='soldier',frame_location=art_loc+r"\Soldier\PNG\Soldier_2",dt=0.14,position=pg.Vector2(0,0)) -> None:
+    def __init__(self,health=50,price=10,name='soldier',frame_location=art_loc+r"\Soldier\PNG\Soldier_2",dt=0.14,position=pg.Vector2(0,0)) -> None:
         super().__init__(health,price,name,frame_location,dt,position)
         self.animator.animations["walk"]=animation.Animation(8,self.frame_location+"_walk_")
         self.animator.animations["shot_front"]=animation.Animation(8,self.frame_location+"_shot_front_")
@@ -54,3 +56,15 @@ class Tank(Unit):
 class Airplane(Unit):
     def __init__(self,price=500,name='airplane',frame_location=art_loc+r"\Airplanes\Fokker\Skin 1\PNG\Fokker",dt=0.14,position=pg.Vector2(0,0)) -> None:
         super().__init__(1000,price,name,frame_location,dt,position)
+        self.flip=True
+class Bar:
+    def __init__(self,value,bar):
+        self.value=value
+        self.bar=bar
+        self.position_offset=pg.Vector2(0,0)
+    def load_bar(self,screen,position,size):
+        bar_img=pg.transform.smoothscale(pg.image.load(self.bar),size)
+        real_size=(size.x,(self.value/100)*size.y)
+        pg.draw.rect(screen,(0,255,0),(position+pg.Vector2(125,30+real_size[1]),real_size-pg.Vector2(5,5)))
+        screen.blit(bar_img,position+pg.Vector2(120,30))
+        

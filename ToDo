@@ -6,9 +6,9 @@
 [*] Command selection rework
 ===============================
 ===============================
-[ ] Polishing previous work
-[ ] Inventory system with UI
-[ ] Shopping system with UI
+[*] Polishing previous work
+[*] Inventory system with UI
+[ ] Character UI
 ===============================
 
 {23/10/2024}
@@ -48,3 +48,42 @@ So did some polishing like setting the size of command window depending on the l
 corrected the spawn position of units and flipped the tank.
 Will take break and go for dinner
 
+(10:26 PM)
+So rightnow I am working on the UI art,will go to sleep at 11:30 PM, will do the implementation of UI for inventory tomorrow.
+
+{25/10/2024}
+(11:22 AM)
+Will try to implement the UI for inventory in the game.
+
+(12:55 PM)
+Okay so I have completed the visual stuff of Inventory UI, now only the mechanic of selection of item is left. Will do it after
+MATLAB class. Will go for sleep.
+
+(8:57 PM)
+So I am done with the Inventory UI implementation but I am facing issue with mouse down input as all stuff in the gameplay is controlled by mouse, things are contradicting with each other. So I have to rework on the mouse input tomorrow, right now I am gonna play RE7.
+
+{26/10/2024}
+(11:43 AM)
+In the train, but thinking to work on the mouse down input problem,will try best to fix it today.
+
+(1:00 PM)
+Well so brain not braining will take a nap, watch movie and in evening will try to fix things up.
+
+(3:47 PM)
+Back to again, will fix this shit for sure.
+*After 10 mins*
+Well so the problem was that when player is trying to select character it also set mouse down true for invenotory slots,I have added a bool for this but TBH I may rework on this mouse input thing in future.
+And also I am dropping the shopping system for now because it will again cause the mouse input issue which I am tired off.
+I will work on something else , maybe sound system.
+
+(6:41 PM)
+So I have decided to work on the UI of characters, like there action turn timer, health bar, getting selected.
+*Few minutes later*
+On Second thought I will do this work tomorrow , kinda bored.
+
+{27/10/2024}
+(9:30 AM )
+Alright Back again, will do work today before reaching home
+
+(10:08 AM )
+So I am kinda a done with this bar stuff, some polishing is required which I will do later.
