@@ -119,7 +119,7 @@ class Inventory:
 class InventorySlot:
     def __init__(self,unit_name,image_offset=(0,0),scale=70):
         self.unit_name=unit_name
-        self.slot_image=pg.transform.smoothscale(pg.image.load(r'D:\Games\CalmBeforeTheStorm\ArtByMe\Inventory_Slot.png'),(scale,scale))
+        self.slot_image=pg.transform.smoothscale(pg.image.load(r'ArtByMe\Inventory_Slot.png'),(scale,scale))
         self.slot_item_image=pg.transform.smoothscale(pg.image.load(r"ExternalArt\Free War Game Kit\InventoryIcon\_"  +self.unit_name+".png"),(65,65))
         self.image_offset=image_offset
         self.rect=pg.Rect(((0,0)),(self.slot_image.get_width(),self.slot_image.get_height()))

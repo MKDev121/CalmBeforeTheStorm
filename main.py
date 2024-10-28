@@ -11,7 +11,7 @@ screen=pg.display.set_mode((width,height),depth=1)
 clock=pg.time.Clock()
 running=True
 dt=0
-background_image=pg.image.load('D:\Games\CalmBeforeTheStorm\ExternalArt\Free War Game Kit\Background\Background_1920x1080.png')
+background_image=pg.image.load('ExternalArt\Free War Game Kit\Background\Background_1920x1080.png')
 main_base=base.Base(0)
 soldier=units.Soldier()
 character_selected=False
@@ -51,6 +51,7 @@ while running:
     if character_selected:
         mouse_down=command_given=base.command_selection(selected_character,screen,mouse_pos,mouse_down)  
         base.taking_command=True
+        
         if command_given:
             selected_character.timer=60
             selected_character.waiting=False
@@ -73,6 +74,8 @@ while running:
         active_unit.turn_timer()
         screen.blit(active_unit.animator.load_frame(active_unit.flip),active_unit.position)
         active_unit.health_bar.load_bar(screen,active_unit.position,pg.Vector2(24,100))
+        active_unit.animation_bar.load_bar(screen,active_unit.position,pg.Vector2(24,72))
+        active_unit.update_values()
 
     #Loading and Displaying Game UI
     if bool(main_base.inventory.inventory_open) :
