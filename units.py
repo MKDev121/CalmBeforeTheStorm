@@ -16,7 +16,7 @@ class Unit:
         self.animator.animations["default"]=animation.Animation(1,frame_location+"_default_")
         self.img=pg.image.load(self.animator.current_frame)
         self.rect=pg.Rect((self.position,(self.img.get_width(),self.img.get_height())))
-        self.timer=60
+        self.timer=0
         self.waiting=False
         self.flip=False
         self.taking_command=False
@@ -36,7 +36,7 @@ class Unit:
         
         
 class Soldier(Unit):
-    def __init__(self,health=50,price=10,name='soldier',frame_location=art_loc+r"\Soldier\PNG\Soldier_2",dt=0.14,position=pg.Vector2(0,0)) -> None:
+    def __init__(self,health=100,price=10,name='soldier',frame_location=art_loc+r"\Soldier\PNG\Soldier_2",dt=0.14,position=pg.Vector2(0,0)) -> None:
         super().__init__(health,price,name,frame_location,dt,position)
         self.animator.animations["walk"]=animation.Animation(8,self.frame_location+"_walk_")
         self.animator.animations["shot_front"]=animation.Animation(8,self.frame_location+"_shot_front_")
@@ -48,6 +48,7 @@ class Turret(Unit):
         super().__init__(health,price,name,frame_location,dt,position)
         self.animator.animations["fire"]=animation.Animation(8,self.frame_location+"_fire_")
         self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",200,pg.Vector2(self.img.get_width(),50))
+        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(self.img.get_width()+21,77),(0,0,255))
         
 
 
@@ -58,6 +59,7 @@ class Tank(Unit):
         self.animator.animations["move_forward"]=animation.Animation(8,self.frame_location+"_move_forward_")
         self.flip=True
         self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",200,pg.Vector2(self.img.get_width(),70))
+        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(self.img.get_width()+21,97),(0,0,255))
         
 class Airplane(Unit):
     def __init__(self,price=500,name='airplane',frame_location=art_loc+r"\Airplanes\Fokker\Skin 1\PNG\Fokker",dt=0.14,position=pg.Vector2(0,0)) -> None:

@@ -42,7 +42,7 @@ while running:
                         main_base.inventory.mouse_down=True
             mouse_down=True        
 
-    print(main_base.inventory.mouse_down)
+    #print(main_base.inventory.mouse_down)
     screen.fill('black')
     screen.blit(background_image,pg.Vector2(0,0))
     main_base.user_input()
@@ -94,7 +94,7 @@ while running:
                     main_base.inventory.unit_selected=slot.unit_name
                
 
-    print(main_base.inventory.unit_selected)
+    #print(main_base.inventory.unit_selected)
     
     pg.display.flip()
     dt=clock.tick(60)/1000

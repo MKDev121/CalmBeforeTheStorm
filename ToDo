@@ -8,7 +8,12 @@
 ===============================
 [*] Polishing previous work
 [*] Inventory system with UI
-[ ] Character UI
+[*] Character UI
+===============================
+===============================
+[ ] Sound System
+[ ] Enemies
+[ ] Progression System
 ===============================
 
 {23/10/2024}
@@ -92,5 +97,8 @@ So I am kinda a done with this bar stuff, some polishing is required which I wil
 At Home!!! Will do some polishing for the bar stuff.
 
 {28/10/2024}
+
+(10:00 AM)
 So completed the work on the bar, also added the animation bar and a function which updates the values at each frame.
 Still some adjustment will be needed but ya the work is done.
+
