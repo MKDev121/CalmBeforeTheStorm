@@ -48,15 +48,7 @@ while running:
     main_base.user_input()
     # soldier.animator.play(soldier.current_animation)    
     # screen.blit(soldier.animator.load_frame(),pg.Vector2(0,0))
-    if character_selected:
-        mouse_down=command_given=base.command_selection(selected_character,screen,mouse_pos,mouse_down)  
-        base.taking_command=True
-        
-        if command_given:
-            selected_character.timer=60
-            selected_character.waiting=False
-            character_selected=False
-            base.taking_command=mouse_down=False
+
 
           
 
@@ -71,13 +63,25 @@ while running:
     #Loading and Displaying animation frames of active units
     for active_unit in main_base.inventory.active_units:  
         active_unit.animator.play(active_unit.current_animation)
-        active_unit.turn_timer()
+        
         screen.blit(active_unit.animator.load_frame(active_unit.flip),active_unit.position)
-        active_unit.health_bar.load_bar(screen,active_unit.position,pg.Vector2(24,100))
-        active_unit.animation_bar.load_bar(screen,active_unit.position,pg.Vector2(24,72))
+        active_unit.health_bar.load_bar(screen,active_unit.position,pg.Vector2(100,24))
+        active_unit.animation_bar.load_bar(screen,active_unit.position,pg.Vector2(72,24))
         active_unit.update_values()
+        active_unit.turn_timer()
 
     #Loading and Displaying Game UI
+    if character_selected:
+        mouse_down=command_given=base.command_selection(selected_character,screen,mouse_pos,mouse_down)  
+        base.taking_command=True
+        
+        if command_given:
+            selected_character.timer=60
+            selected_character.waiting=False
+            character_selected=False
+            base.taking_command=mouse_down=False    
+
+
     if bool(main_base.inventory.inventory_open) :
         slot_pos_count=0
         for slot in main_base.inventory.slots:

@@ -20,8 +20,8 @@ class Unit:
         self.waiting=False
         self.flip=False
         self.taking_command=False
-        self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",100,pg.Vector2(self.img.get_width(),30))
-        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(self.img.get_width()+21,57),(0,0,255))
+        self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",100,pg.Vector2(0,-20))
+        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(0,0),(0,0,255))
         
         
     def update_values(self):
@@ -47,8 +47,8 @@ class Turret(Unit):
     def __init__(self,health=200,price=100,name='turrets',frame_location=art_loc+r"\Turret\PNG\turret_1",dt=0.14,position=pg.Vector2(0,0)) -> None:
         super().__init__(health,price,name,frame_location,dt,position)
         self.animator.animations["fire"]=animation.Animation(8,self.frame_location+"_fire_")
-        self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",200,pg.Vector2(self.img.get_width(),50))
-        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(self.img.get_width()+21,77),(0,0,255))
+        self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",200,pg.Vector2(60,-30))
+        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(60,-10),(0,0,255))
         
 
 
@@ -58,8 +58,8 @@ class Tank(Unit):
         self.animator.animations["attack"]=animation.Animation(8,self.frame_location+"_attack_")
         self.animator.animations["move_forward"]=animation.Animation(8,self.frame_location+"_move_forward_")
         self.flip=True
-        self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",200,pg.Vector2(self.img.get_width(),70))
-        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(self.img.get_width()+21,97),(0,0,255))
+        self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",200,pg.Vector2(100,10))
+        self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(100,30),(0,0,255))
         
 class Airplane(Unit):
     def __init__(self,price=500,name='airplane',frame_location=art_loc+r"\Airplanes\Fokker\Skin 1\PNG\Fokker",dt=0.14,position=pg.Vector2(0,0)) -> None:
@@ -76,7 +76,7 @@ class Bar:
         
     def load_bar(self,screen,position,size):
         bar_img=pg.transform.smoothscale(pg.image.load(self.bar),size)
-        real_size=(size.x,(self.value/self.max_value)*size.y)
+        real_size=((self.value/self.max_value)*size.x,size.y)
         pivot_correction=size.y-real_size[1]
         pg.draw.rect(screen,self.color,(position+pg.Vector2(self.offset.x+5,self.offset.y+pivot_correction),real_size-pg.Vector2(5,5)))
         screen.blit(bar_img,position+self.offset)
