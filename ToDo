@@ -11,6 +11,7 @@
 [*] Character UI
 ===============================
 ===============================
+[ ] Input System Rework
 [ ] Sound System
 [ ] Enemies
 [ ] Progression System
@@ -101,4 +102,24 @@ At Home!!! Will do some polishing for the bar stuff.
 (10:00 AM)
 So completed the work on the bar, also added the animation bar and a function which updates the values at each frame.
 Still some adjustment will be needed but ya the work is done.
+
+{15/12/2024}
+
+(10:22 PM)
+So I am finally back to work, My first priority is to rework the mouse input system.
+
+(11:30 PM)
+Started working on the input system, will try to finish this tomorrow.
+
+{16/12/2024}
+(10:45 AM)
+Alright, resuming the work on the input system, so far its going good.
+
+(12:45 PM)
+Okay so I am almost done witht the rework.The idea was to use only one varaible set of mouse state and input rather than
+each object having its own set.Had to create a seperate file for that as there was some "circular import" type error.
+Will do rest of the work in evening , hopefully I will complete this by tonight
+
+(7:12 PM)
+So I am done with the reimplementation of mouse input, the input now works properly, atleast for now.I will compare both the old and new input system,upload this update in discord.Will think on what to do next.
 

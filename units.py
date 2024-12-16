@@ -1,6 +1,8 @@
 """A script containing all classes of units"""
 import pygame as pg
 import animation
+import shared
+import base
 """Base class unit"""
 art_loc='ExternalArt\Free War Game Kit\Characters'
 class Unit:
@@ -22,11 +24,27 @@ class Unit:
         self.taking_command=False
         self.health_bar=Bar(self.health,r"ArtByMe\Bar_Slot.png",100,pg.Vector2(0,-20))
         self.animation_bar=Bar(self.timer,r"ArtByMe\Bar_Slot.png",60,pg.Vector2(0,0),(0,0,255))
-        
+        self.mouse_down=False
+        self.mouse_pos=pg.mouse.get_pos()
+        self.command_given=False
         
     def update_values(self):
         #screen.blit(self.animator.play(self.current_animation),pg.Vector2(0,0))
         self.animation_bar.value=self.timer
+        if self.rect.collidepoint(shared.mouse_pos):
+            if shared.mouse_down and shared.mouse_current_state=='free' and self.waiting:
+                shared.mouse_current_state=shared.mouse_states[0]
+                shared.selected_character=self
+                print("Hello")
+        if shared.mouse_current_state=='character_selected' and shared.selected_character==self:
+            self.command_given=base.command_selection(self,shared.screen,shared.mouse_pos,shared.mouse_down)
+            
+            
+        if self.command_given:
+            self.timer=60
+            self.waiting=False
+            self.command_given=False
+            shared.selected_character=None
     def turn_timer(self):
         if self.timer>=0:
             self.timer-=self.dt

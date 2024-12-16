@@ -3,6 +3,7 @@ import pygame as pg
 import keyboard 
 import units as uni
 import pygame_widgets as pw
+import shared
 units={'soldier':0,
        'turrets':0,
        'tank':0,
@@ -42,7 +43,7 @@ class Base:
                 self.keysdown=True
             
             #Spawning units
-            if bool(self.inventory.inventory_open)==True and self.mouse_down:
+            if bool(self.inventory.inventory_open)==True and shared.mouse_down and shared.mouse_current_state=='spawning':
                 if self.inventory.unit_selected=="soldier" :#Spawn soldier
                     print('Soldier Spawned')
                     self.active_key=pg.K_1
@@ -65,7 +66,7 @@ class Base:
                     self.active_key=pg.K_4
                     self.keysdown=True
                 self.inventory.unit_selected=''
-                self.mouse_down=False
+                shared.mouse_current_state='buffer'
                 
         if self.active_key!=None:
             self.keysdown=keys[self.active_key]
@@ -155,10 +156,11 @@ def command_selection(obj,screen,mouse_pos,mouse_down):
     pg.draw.rect(screen,(152,152,152),((obj.position.x,obj.position.y-obj.img.get_height()),(max_len+30,50*len(moves))),width=5)
     for move_text in moves_text:
         screen.blit(move_text.text_surf,move_text.pos)
-        if move_text.rect.collidepoint(mouse_pos):
-            if mouse_down: 
+        if move_text.rect.collidepoint(shared.mouse_pos):
+            if shared.mouse_down: 
                 obj.current_animation=move_text.text
                 print('command selected')
+                shared.mouse_current_state='buffer'
                 return True        
 
 
