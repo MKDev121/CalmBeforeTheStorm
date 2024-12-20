@@ -19,6 +19,9 @@ character_selected=False
 selected_character=None
 mouse_down=False
 over_character=False
+pg.mixer.music.load('Sounds\BgMusic.mp3')
+pg.mixer.music.play(loops=-1)
+pg.mixer.music.set_volume(.2)
 
 while running:
     events=pg.event.get()
@@ -67,9 +70,12 @@ while running:
             slot_pos_count+=1
             if shared.mouse_current_state=='free':
                 over_slot=slot.unit_select(shared.mouse_pos,screen,(slot_pos-2,-2))
-                if over_slot and shared.mouse_down:
-                    main_base.inventory.unit_selected=slot.unit_name
-                    shared.mouse_current_state='spawning'
+                if over_slot:
+                    #shared.player_audio_source.play('hover')
+                    if shared.mouse_down:
+                        main_base.inventory.unit_selected=slot.unit_name
+                        shared.player_audio_source.play('hover')
+                        shared.mouse_current_state='spawning'
                     
                
 

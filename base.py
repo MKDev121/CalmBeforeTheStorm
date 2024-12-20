@@ -66,6 +66,7 @@ class Base:
                     self.active_key=pg.K_4
                     self.keysdown=True
                 self.inventory.unit_selected=''
+                shared.player_audio_source.play('select')
                 shared.mouse_current_state='buffer'
                 
         if self.active_key!=None:
@@ -160,6 +161,7 @@ def command_selection(obj,screen,mouse_pos,mouse_down):
             if shared.mouse_down: 
                 obj.current_animation=move_text.text
                 print('command selected')
+                shared.player_audio_source.play('select')
                 shared.mouse_current_state='buffer'
                 return True        
 

@@ -123,3 +123,16 @@ Will do rest of the work in evening , hopefully I will complete this by tonight
 (7:12 PM)
 So I am done with the reimplementation of mouse input, the input now works properly, atleast for now.I will compare both the old and new input system,upload this update in discord.Will think on what to do next.
 
+{19/12/2024}
+(7:47 PM)
+So decided to work on sound systems,through the help of chatgpt I got to know about how sound works in pygame.
+Basically there are channels which play's one sound object a time, by default pygame has 8 channels.But we can set the number of channels before game loads.
+Though we can't change the number of channels in runtime.
+That's why only some actions on the screen will get sound.
+Action like player selecting character, giving command, spawning, destruction etc.. actions which happens by players decesions or not much repetative.
+Also there will be dedicated channel for background music.
+For now I will give sound effects to player's command and selection,but will expand it later.
+Background music by - Music by Vlad Krotov from Pixabay
+
+(8:36 PM)
+So I am down with the sound system, basically there one class audiosource which we use to play different sounds in the game. Will add more sounds after adding enemies.Also added music,maybe I will change it later but for now it is fine.
