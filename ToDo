@@ -11,8 +11,8 @@
 [*] Character UI
 ===============================
 ===============================
-[ ] Input System Rework
-[ ] Sound System
+[*] Input System Rework
+[*] Sound System
 [ ] Enemies
 [ ] Progression System
 ===============================
@@ -136,3 +136,12 @@ Background music by - Music by Vlad Krotov from Pixabay
 
 (8:36 PM)
 So I am down with the sound system, basically there one class audiosource which we use to play different sounds in the game. Will add more sounds after adding enemies.Also added music,maybe I will change it later but for now it is fine.
+
+{27/12/2024}
+(10:43 AM) 
+So I am at home, currently chilling, but I will try do something.Today I will think on Enemies and gameplay loop.
+Want to keep it simple so I can finish this project before club audition begins.
+
+(5:14 PM)
+So I have planned out how many enemies will be their and what are their characteristics & properties.
+I will use the same classes from units.py script with some modification so it can incoporate enemy behaviour.

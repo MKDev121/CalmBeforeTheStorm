@@ -27,18 +27,22 @@ class Unit:
         self.mouse_down=False
         self.mouse_pos=pg.mouse.get_pos()
         self.command_given=False
+        self.is_enemy=False
         
     def update_values(self):
         #screen.blit(self.animator.play(self.current_animation),pg.Vector2(0,0))
         self.animation_bar.value=self.timer
-        if self.rect.collidepoint(shared.mouse_pos):
-            if shared.mouse_down and shared.mouse_current_state=='free' and self.waiting:
-                shared.mouse_current_state=shared.mouse_states[0]
-                shared.selected_character=self
-                shared.player_audio_source.play('hover')
-                print("Hello")
-        if shared.mouse_current_state=='character_selected' and shared.selected_character==self:
-            self.command_given=base.command_selection(self,shared.screen,shared.mouse_pos,shared.mouse_down)
+        if ~self.is_enemy:
+            if self.rect.collidepoint(shared.mouse_pos):
+                if shared.mouse_down and shared.mouse_current_state=='free' and self.waiting:
+                    shared.mouse_current_state=shared.mouse_states[0]
+                    shared.selected_character=self
+                    shared.player_audio_source.play('hover')
+                    print("Hello")
+            if shared.mouse_current_state=='character_selected' and shared.selected_character==self:
+                self.command_given=base.command_selection(self,shared.screen,shared.mouse_pos,shared.mouse_down)
+        else:
+            print("Enemy")
             
             
         if self.command_given:

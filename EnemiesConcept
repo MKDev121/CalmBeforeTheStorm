@@ -1,0 +1,30 @@
+The game will have simple types of enemies.
+
+For now there will be three enemies.
+
+-----------------
+1) ENEMY SOLDIER|
+-----------------
+-They will be more in numbers and spawn very frequently.
+-If they reach near the base they will damage the base.
+-They either move forward or shoot playerside characters.
+-After an inteval of time they change their action,it can be same or other one.
+-They have low HP.
+-Tanks and soldiers are effective against them.
+
+---------------
+2) Enemy Tank |
+---------------
+-They are less in number and their frquency of spawning is less.
+-Same as soldier enemy except they have more health and damage.
+
+------------------
+3) Enemy airplane|
+------------------
+-Only one spawns at a time.
+-It moves in air and drop bombs randomly on ground.
+-It moves right and left in the game screen.
+-Their damage is medium.
+-Turrets and soldier are effective against them.
+
+
