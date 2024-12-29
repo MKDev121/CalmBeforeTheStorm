@@ -47,26 +47,30 @@ class Base:
                 if self.inventory.unit_selected=="soldier" :#Spawn soldier
                     print('Soldier Spawned')
                     self.active_key=pg.K_1
-                    self.inventory.unit_spawning(uni.Soldier(position=pg.Vector2(self.mouse_pos[0],540)))
+                    obj=uni.Soldier(position=pg.Vector2(self.mouse_pos[0],540))
+                    
+                    
                     self.keysdown=True
                 elif self.inventory.unit_selected=="turret":#Spawn turret
                     print('Turret Spawned')
                     self.active_key=pg.K_2
-                    self.inventory.unit_spawning(uni.Turret(position=pg.Vector2(self.mouse_pos[0],515)))
+                    obj=uni.Turret(position=pg.Vector2(self.mouse_pos[0],515))
                     self.keysdown=True
                 elif self.inventory.unit_selected=="tank":#Spawn tank
                     print('Tank spawned')
                     self.active_key=pg.K_3
-                    self.inventory.unit_spawning(uni.Tank(position=pg.Vector2(self.mouse_pos[0],500)))
+                    obj=uni.Tank(position=pg.Vector2(self.mouse_pos[0],500))
                     self.keysdown=True
                 elif self.inventory.unit_selected=="airplane":#Spawn plane
                     print('Plane spawned')
-                    self.inventory.unit_spawning(uni.Airplane(position=pg.Vector2(self.mouse_pos[0],10)))
+                    obj=uni.Airplane(position=pg.Vector2(self.mouse_pos[0],10))
                     
                     self.active_key=pg.K_4
                     self.keysdown=True
                 self.inventory.unit_selected=''
                 shared.player_audio_source.play('select')
+                self.inventory.unit_spawning(obj)
+                shared.GameObjects.append(obj)
                 shared.mouse_current_state='buffer'
                 
         if self.active_key!=None:

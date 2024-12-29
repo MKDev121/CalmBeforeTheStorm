@@ -3,6 +3,7 @@ import base
 import animation
 import units
 import shared
+import enemies
 """Main python file which will run the gameloop.
    The Display is 1000px x 720px 60 frames persec"""
 pg.init()
@@ -23,8 +24,26 @@ pg.mixer.music.load('Sounds\BgMusic.mp3')
 pg.mixer.music.play(loops=-1)
 pg.mixer.music.set_volume(.2)
 
+def enemy_spawn_timer(timer,time,object,offset=0):
+    if timer>0:
+        timer-=dt
+    else:
+        timer=time
+        obj=object
+        obj.is_enemy=True
+        obj.position=pg.Vector2(0,height-obj.rect.size[1]+offset)
+        shared.GameObjects.append(obj)
+        enemies.enemies[object.name].append(obj)
+    return timer
+
+
+        
+        
 while running:
     events=pg.event.get()
+    enemies.soldier_spawnTimer=enemy_spawn_timer(enemies.soldier_spawnTimer,enemies.soldier_spawnTime,units.Soldier())
+    enemies.tank_spawnTimer=enemy_spawn_timer(enemies.tank_spawnTimer,enemies.tank_spawnTime,units.Tank(),80)
+
     mouse_pos=shared.mouse_pos=pg.mouse.get_pos()
     for event in events:
         if event.type==pg.QUIT:
@@ -45,7 +64,14 @@ while running:
     #pg.draw.rect(screen,'red',pg.Rect((0-camera.offset.x,0-camera.offset.y),(50,50)))
     #pg.draw.circle(screen,'red',pl.position-camera.offset,30)
     keys = pg.key.get_pressed()
-
+    #Loading and displaying animation frames of spawned enemies
+    for enemy_type in enemies.enemies:
+        for enemy in enemies.enemies[enemy_type]:
+            enemy.animator.play(enemy.current_animation)
+            screen.blit(enemy.animator.load_frame(not(enemy.flip)),enemy.position)
+            enemy.update_values()
+            enemy.turn_timer()
+            
     #Loading and Displaying animation frames of active units
     for active_unit in main_base.inventory.active_units:  
         active_unit.animator.play(active_unit.current_animation)
@@ -56,8 +82,6 @@ while running:
         active_unit.turn_timer()
 
     #Loading and Displaying Game UI
- 
-
 
     if bool(main_base.inventory.inventory_open) :
         slot_pos_count=0

@@ -9,3 +9,4 @@ player_audio_source=audio.AudioSource(0)
 player_audio_source.add_sound('click','Sounds\click.wav')
 player_audio_source.add_sound('select','Sounds\select.wav')
 player_audio_source.add_sound('hover','Sounds\hover.wav')
+GameObjects=[]

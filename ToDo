@@ -145,3 +145,33 @@ Want to keep it simple so I can finish this project before club audition begins.
 (5:14 PM)
 So I have planned out how many enemies will be their and what are their characteristics & properties.
 I will use the same classes from units.py script with some modification so it can incoporate enemy behaviour.
+
+(10:09 PM)
+Going to start the implementation of enemies in the game.There will be seperate script to controls enemies like
+their spawn timing, dictionary which keeps track of the enemies in the screen,and some functions.I will also add
+some functions and attributes in the classes of units script.
+
+(10:50 PM)
+Ahhhh unable to think how can I implement it, so will do this tomorrow but ya tomorrow for sure I will implement the base and then later will expand on it.
+
+{28/12/2024}
+(9:13 AM)
+Alright so today I will definetly implement the basic idea of enemies.
+
+(11:32 AM)
+So I am done with the basic idea of enemies. Now after this I have to implement the gameplay so I can move further in the enemy system and also keeping the player side in mind.
+Will think on the gameplay now.
+
+(5:30 PM)
+So I am almost done with two gameplay mechanics shooting and moving.I will try to complete it by tonight.
+
+{29/12/2024}
+(9:31 AM)
+Came late from yesterday's party so wasn't able to finish it, but ya I did little work now, will complete it today.
+
+(4:37 PM)
+So back to work,time to finish this the work today and share the update to the community.
+
+(5:23 PM)
+SO I have completed the enemy system(Almost cause I have to work on planes),but I will change the code of shooting mechanic as it requires more generalised method,which requires math and which I will do in college.But for now this is enough.
+I will share the update to the community.
